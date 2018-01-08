@@ -6,6 +6,6 @@
            fetch="ssh://git@git.choose-a.name/choose-a"
            review="review.choose-a.name" />
 
-<project path="packages/apps/OpenDelta" name="android_packages_apps_OpenDelta" groups="device" remote="choose" revision="choose-8.0" />
+<project path="packages/apps/OpenDelta" name="android_packages_apps_OpenDelta" groups="device" remote="choose" revision="choose-8.1" />
 </manifest>
 
