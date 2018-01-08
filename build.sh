@@ -208,6 +208,11 @@ fi
 export OUT_DIR=/var/lib/jenkins/choose-a
 . build/envsetup.sh
 lunch $LUNCH
+sleep 2
+
+echo "Forcing LUNCH..."
+. build/envsetup.sh
+lunch $LUNCH
 check_result "lunch failed."
 
 # save manifest used for build (saving revisions as current HEAD)
