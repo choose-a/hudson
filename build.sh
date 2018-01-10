@@ -364,7 +364,9 @@ fi
 if [ -f $OUT/recovery.img ]
 then
   cp $OUT/recovery.img $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-recovery.img
-  md5sum $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-recovery.img > $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-recovery.img.md5sum
+  cd $WORKSPACE/archive/
+  md5sum $REPO_BRANCH-$CHOOSEADEVICE-recovery.img > $REPO_BRANCH-$CHOOSEADEVICE-recovery.img.md5sum
+  cd -
 fi
 if [ -f $OUT/boot.img ]
 then
