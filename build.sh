@@ -364,6 +364,7 @@ fi
 if [ -f $OUT/recovery.img ]
 then
   cp $OUT/recovery.img $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-recovery.img
+  md5sum $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-recovery.img > $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-recovery.img.md5sum
 fi
 if [ -f $OUT/boot.img ]
 then
