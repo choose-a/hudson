@@ -370,7 +370,7 @@ then
 fi
 if [ -f $OUT/boot.img ]
 then
-  cp $OUT/boot.img $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-boot.img
+  cp $OUT/boot.img $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-boot.img
 fi
 
 # archive the build.prop as well
