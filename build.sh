@@ -363,11 +363,11 @@ then
 fi
 if [ -f $OUT/recovery.img ]
 then
-  cp $OUT/recovery.img $WORKSPACE/archive/$CHOOSEADEVICE-recovery.img
+  cp $OUT/recovery.img $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-recovery.img
 fi
 if [ -f $OUT/boot.img ]
 then
-  cp $OUT/boot.img $WORKSPACE/archive/$CHOOSEADEVICE-boot.img
+  cp $OUT/boot.img $WORKSPACE/archive/$PLATFORM_VERSION-$CHOOSEADEVICE-boot.img
 fi
 
 # archive the build.prop as well
