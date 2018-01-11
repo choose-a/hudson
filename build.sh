@@ -79,6 +79,10 @@ mkdir -p archive
 export BUILD_NO=$BUILD_NUMBER
 unset BUILD_NUMBER
 
+# Force removing kernel sources
+# since we have embedded git projects
+rm -fr choose-a/kernel/sony/msm
+
 export PATH=~/bin:$PATH
 export BUILD_WITH_COLORS=1
 
