@@ -367,14 +367,28 @@ then
 fi
 if [ -f $OUT/recovery.img ]
 then
-  cp $OUT/recovery.img $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-recovery.img
+  mkdir -p $WORKSPACE/archive/twrp
+  recoveryimage=${REPO_BRANCH}-${CHOOSEADEVICE}-recovery.img
+
+  if echo $REPO_BRANCH | grep "8.0" > /dev/null ; then
+    cp $OUT/recovery.img $WORKSPACE/archive/twrp/${recoveryimage}
+    cd $WORKSPACE/archive/twrp
+    md5sum ${recoveryimage} > ${recoveryimage}.md5sum
+    cd -
+  fi
+
+  cp $OUT/recovery.img $WORKSPACE/archive/${recoveryimage}
   cd $WORKSPACE/archive/
-  md5sum $REPO_BRANCH-$CHOOSEADEVICE-recovery.img > $REPO_BRANCH-$CHOOSEADEVICE-recovery.img.md5sum
+  md5sum ${recoveryimage} > ${recoveryimage}.md5sum
   cd -
 fi
 if [ -f $OUT/boot.img ]
 then
-  cp $OUT/boot.img $WORKSPACE/archive/$REPO_BRANCH-$CHOOSEADEVICE-boot.img
+  bootimage=${REPO_BRANCH}-${CHOOSEADEVICE}-boot.img
+  cp ${OUT}/boot.img ${WORKSPACE}/archive/${bootimage}
+  cd ${WORKSPACE}/archive/
+  md5sum ${bootimage} > ${bootimage}.md5sum
+  cd -
 fi
 
 # archive the build.prop as well
