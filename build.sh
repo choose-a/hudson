@@ -176,7 +176,7 @@ else
   rm -rf vendor
 
   mkdir -p .repo/local_manifests
-  cp  ../local.xml .repo/local_manifests/
+  cp  ../local_manifests/${REPO_BRANCH}.xml .repo/local_manifests/
 
   repo sync --force-sync -d -c -f -j24
   check_result "repo sync failed.", false, false
