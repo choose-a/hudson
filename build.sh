@@ -234,6 +234,7 @@ check_result "lunch failed."
 #rmdir $TEMPSTASH
 
 rm -f $OUT/*.zip*
+rm -f $OUT/*.img*
 
 UNAME=$(uname)
 
@@ -392,11 +393,10 @@ then
 fi
 
 # archive the build.prop as well
-ZIP=$(ls $WORKSPACE/archive/choose*.zip)
-unzip -p $ZIP system/build.prop > $WORKSPACE/archive/build.prop
-
-# CORE: save manifest used for build (saving revisions as current HEAD)
-#rm -f .repo/local_manifests/roomservice.xml
+if [ -f $OUT/system/build.prop ]
+then
+    cp -f ${OUT}/system/build.prop $WORKSPACE/archive/build.prop
+fi
 
 # Stash away other possible manifests
 TEMPSTASH=$(mktemp -d)

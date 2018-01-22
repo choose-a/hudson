@@ -7,14 +7,14 @@
 export DEVICE=$CHOOSEADEVICE
 
 if [ "$DEVICE" == "" ]; then
-	if [ "$1" != "" ]; then
-		DEVICE=$1
-	fi
+    if [ "$1" != "" ]; then
+        DEVICE=$1
+    fi
 fi
 
 if [ "$DEVICE" == "" ]; then
-	echo "Abort: no device set" >&2
-	exit 1
+    echo "Abort: no device set" >&2
+    exit 1
 fi
 
 # ------ CONFIGURATION ------
@@ -36,20 +36,20 @@ KEY_PK8=$HOME/.keys/platform.pk8
 # ------ PROCESS ------
 
 getFileName() {
-	echo ${1##*/}
+    echo ${1##*/}
 }
 
 getFileNameNoExt() {
-	echo ${1%.*}
+    echo ${1%.*}
 }
 
 getFileMD5() {
-	TEMP=$(md5sum -b $1)
-	for T in $TEMP; do echo $T; break; done
+    TEMP=$(md5sum -b $1)
+    for T in $TEMP; do echo $T; break; done
 }
 
 getFileSize() {
-	echo $(stat --print "%s" $1)
+    echo $(stat --print "%s" $1)
 }
 
 nextPowerOf2() {
@@ -69,20 +69,20 @@ FILE_LAST=$(getFileName $(ls -1 $PATH_LAST/$FILE_MATCH))
 FILE_LAST_BASE=$(getFileNameNoExt $FILE_LAST)
 
 if [ "$FILE_CURRENT" == "" ]; then
-	echo "Abort: CURRENT zip not found" >&2
-	exit 1
+    echo "Abort: CURRENT zip not found" >&2
+    exit 1
 fi
 
 if [ "$FILE_LAST" == "" ]; then
-	echo "Abort: LAST zip not found" >&2
-	mkdir -p $PATH_LAST
-	cp $PATH_CURRENT/$FILE_CURRENT $PATH_LAST/$FILE_CURRENT
-	exit 0
+    echo "Abort: LAST zip not found" >&2
+    mkdir -p $PATH_LAST
+    cp $PATH_CURRENT/$FILE_CURRENT $PATH_LAST/$FILE_CURRENT
+    exit 0
 fi
 
 if [ "$FILE_LAST" == "$FILE_CURRENT" ]; then
-	echo "Abort: CURRENT and LAST zip have the same name" >&2
-	exit 1
+    echo "Abort: CURRENT and LAST zip have the same name" >&2
+    exit 1
 fi
 
 rm -rf work
