@@ -79,10 +79,6 @@ mkdir -p archive
 export BUILD_NO=$BUILD_NUMBER
 unset BUILD_NUMBER
 
-# Force removing kernel sources
-# since we have embedded git projects
-rm -fr choose-a/kernel/sony/msm
-
 export PATH=~/bin:$PATH
 export BUILD_WITH_COLORS=1
 
@@ -116,6 +112,13 @@ JENKINS_BUILD_DIR=choose-a
 
 mkdir -p $JENKINS_BUILD_DIR
 cd $JENKINS_BUILD_DIR
+
+# Force removing kernel sources
+# since we have embedded git projects
+rm -fr kernel
+
+# Force a cleanup
+rm -fr out/target/product
 
 # always force a fresh repo init since we can build off different branches
 # and the "default" upstream branch can get stuck on whatever was init first.
@@ -327,7 +330,9 @@ if [ $TIME_SINCE_LAST_CLEAN -gt "24" -o $CLEAN = "true" ]
 then
   echo "Cleaning!"
   touch .clean
-  make clobber
+  # make clobber
+  # Force a cleanup
+  rm -fr out/target/product
 else
   echo "Skipping clean: $TIME_SINCE_LAST_CLEAN hours since last clean."
 fi
@@ -433,4 +438,6 @@ fi
 
 ##end with make clobber
 echo "save ssd space. Making clobber"
-time make clobber
+#time make clobber
+# Force a cleanup
+rm -fr out/target/product
